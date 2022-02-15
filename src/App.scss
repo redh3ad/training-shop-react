@@ -1,0 +1,22 @@
+$page-font: 'Raleway', sans-serif;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: $page-font;
+}
+
+$body-bg: lightgrey;
+$root-bg: #fff;
+
+body {
+  background-color: $body-bg;
+  #root {
+    max-width: 1440px;
+    min-height: 100vh;
+    background-color: $root-bg;
+    margin: 0 auto;
+    padding: 0 100px 50px 100px;
+  }
+}
