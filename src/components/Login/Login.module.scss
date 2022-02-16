@@ -1,0 +1,109 @@
+@import '../../colorAndFont.scss';
+
+.login__page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  .bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #6a6a6a 50%, #e9e9e9 0);
+    bottom: 0;
+    left: -50%;
+    opacity: 0.5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+    &.bg2 {
+      animation-direction: alternate-reverse;
+      animation-duration: 4s;
+    }
+    &.bg3 {
+      animation-duration: 5s;
+    }
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(-25%);
+    }
+    100% {
+      transform: translateX(25%);
+    }
+  }
+
+  .login__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 650px;
+    width: 95%;
+    padding: 32px;
+    border-radius: 15px;
+    background-color: $login-bg;
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .input__errors {
+      color: red;
+      margin-bottom: -19.8px;
+    }
+
+    input {
+      outline: none;
+      width: 100%;
+      border: none;
+      border-radius: 13px;
+      box-shadow: 0px 4px 16px rgba(26, 31, 22, 0.15);
+      padding: 10px;
+      font-weight: $font-regular;
+      font-size: 20px;
+      line-height: 24px;
+      font-family: $page-font;
+      margin-top: 30px;
+      margin-bottom: 9px;
+      color: rgba(26, 31, 22, 0.7);
+      &::placeholder {
+        font-size: 20px;
+        line-height: 24px;
+        font-family: $page-font;
+        color: $color-placeholder;
+      }
+      &::after {
+        content: attr(data-info);
+      }
+      &:hover::after {
+        content: attr(data-title);
+      }
+    }
+
+    button {
+      margin-top: 30px;
+      font-family: $page-font;
+      cursor: pointer;
+      background: $color-dark;
+      border-radius: 10px;
+      border: 3px solid $color-dark;
+      width: 100%;
+      color: $color-white;
+      padding: 5px;
+      font-weight: $font-medium;
+      font-size: 20px;
+      line-height: 24px;
+      transition: all 0.5s ease;
+      box-shadow: 0px 4px 16px rgba(26, 31, 22, 0.15);
+      &:hover {
+        background: transparent;
+        color: $color-dark;
+      }
+      &:active {
+        background: rgba(26, 31, 22, 0.2);
+      }
+    }
+  }
+}

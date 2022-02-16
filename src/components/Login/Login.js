@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import st from './Login.module.scss';
 
 const Login = ({ authHandler }) => {
   // Form Values
@@ -90,45 +91,52 @@ const Login = ({ authHandler }) => {
   }
 
   return (
-    <form onSubmit={(e) => submitForm(e)}>
-      <h1>Login</h1>
-      {emailDirty && emailError && (
-        <div style={{ color: 'red' }}>{emailError}</div>
-      )}
-      <input
-        onBlur={(e) => blurHandler(e)}
-        name="email"
-        type="text"
-        onChange={(e) => formHandler(e)}
-        value={email}
-        placeholder="Email"
-      />
-      {loginDirty && loginError && (
-        <div style={{ color: 'red' }}>{loginError}</div>
-      )}
-      <input
-        onBlur={(e) => blurHandler(e)}
-        name="login"
-        type="text"
-        onChange={(e) => formHandler(e)}
-        value={login}
-        placeholder="Login"
-      />
-      {passwordDirty && passwordError && (
-        <div style={{ color: 'red' }}>{passwordError}</div>
-      )}
-      <input
-        onBlur={(e) => blurHandler(e)}
-        name="password"
-        type="password"
-        onChange={(e) => formHandler(e)}
-        value={password}
-        placeholder="Password"
-      />
-      <button type="submit" disabled={!formValid}>
-        Login
-      </button>
-    </form>
+    <div className={st.login__page}>
+      <div>
+        <div className={st.bg}></div>
+        <div className={`${st.bg} ${st.bg2}`}></div>
+        <div className={`${st.bg} ${st.bg3}`}></div>
+      </div>
+      <form className={st.login__form} onSubmit={(e) => submitForm(e)}>
+        <h1>Sign in</h1>
+        {emailDirty && emailError && (
+          <div className={st.input__errors}>{emailError}</div>
+        )}
+        <input
+          onBlur={(e) => blurHandler(e)}
+          name="email"
+          type="text"
+          onChange={(e) => formHandler(e)}
+          value={email}
+          placeholder="Email: admin@mail.com"
+        />
+        {loginDirty && loginError && (
+          <div className={st.input__errors}>{loginError}</div>
+        )}
+        <input
+          onBlur={(e) => blurHandler(e)}
+          name="login"
+          type="text"
+          onChange={(e) => formHandler(e)}
+          value={login}
+          placeholder="Login: admin"
+        />
+        {passwordDirty && passwordError && (
+          <div className={st.input__errors}>{passwordError}</div>
+        )}
+        <input
+          onBlur={(e) => blurHandler(e)}
+          name="password"
+          type="password"
+          onChange={(e) => formHandler(e)}
+          value={password}
+          placeholder="Password: admin"
+        />
+        <button type="submit" disabled={!formValid}>
+          Login
+        </button>
+      </form>
+    </div>
   );
 };
 

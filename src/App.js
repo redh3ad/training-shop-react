@@ -1,7 +1,7 @@
 import './App.scss';
 import Navbar from './components/Navbar/Navbar';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Routes,
   Navigate,
@@ -44,9 +44,9 @@ function App() {
   return (
     <Router>
       {isAuth ? (
-        <div>
+        <div className="app__wrapper">
           <Navbar logout={logout} />
-          <div className="app__wrapper">
+          <div className="app__content">
             <Routes>
               <Route path="/home" element={<Home />} />
               <Route path="/shop" element={<Shop />}>
