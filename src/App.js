@@ -15,21 +15,54 @@ import Product from './components/Shop/Product/Product';
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
+  const [form, setForm] = useState({
+    login: '',
+    password: '',
+  });
+  const globalLogin = 'admin';
+  const globalPassword = 'admin';
 
   useEffect(() => {
     if (localStorage.getItem('auth')) {
       setIsAuth(true);
     }
+    if (localStorage.getItem('login')) {
+      const login = localStorage.getItem('login');
+      setForm((prevForm) => {
+        return { ...prevForm, login: login };
+      });
+    }
+    if (localStorage.getItem('password')) {
+      const password = localStorage.getItem('password');
+      setForm((prevForm) => {
+        return { ...prevForm, password: password };
+      });
+    }
   }, []);
 
   function login() {
-    setIsAuth(true);
-    localStorage.setItem('auth', true);
+    if (form.login === globalLogin && form.password === globalPassword) {
+      setIsAuth(true);
+      localStorage.setItem('auth', isAuth);
+      localStorage.setItem('login', globalLogin);
+      localStorage.setItem('password', globalPassword);
+    } else {
+      alert('wrong login or password, try again');
+    }
+  }
+
+  function handleForm(e) {
+    const { name, value } = e.target;
+    setForm((prevForm) => {
+      return { ...prevForm, [name]: value };
+    });
   }
 
   function logout() {
     setIsAuth(false);
     localStorage.removeItem('auth');
+    localStorage.removeItem('login');
+    localStorage.removeItem('password');
   }
 
   return (
@@ -50,7 +83,13 @@ function App() {
         </div>
       ) : (
         <Routes>
-          <Route exact path="/login" element={<Login login={login} />} />
+          <Route
+            exact
+            path="/login"
+            element={
+              <Login login={login} form={form} handleForm={handleForm} />
+            }
+          />
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       )}
