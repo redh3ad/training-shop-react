@@ -15,10 +15,7 @@ import Product from './components/Shop/Product/Product';
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
-  const [form, setForm] = useState({
-    login: '',
-    password: '',
-  });
+  const globalEmail = 'admin@mail.com';
   const globalLogin = 'admin';
   const globalPassword = 'admin';
 
@@ -26,43 +23,22 @@ function App() {
     if (localStorage.getItem('auth')) {
       setIsAuth(true);
     }
-    if (localStorage.getItem('login')) {
-      const login = localStorage.getItem('login');
-      setForm((prevForm) => {
-        return { ...prevForm, login: login };
-      });
-    }
-    if (localStorage.getItem('password')) {
-      const password = localStorage.getItem('password');
-      setForm((prevForm) => {
-        return { ...prevForm, password: password };
-      });
-    }
   }, []);
 
-  function login() {
-    if (form.login === globalLogin && form.password === globalPassword) {
+  function authHandler(email, login, password) {
+    if (
+      email === globalEmail &&
+      login === globalLogin &&
+      password === globalPassword
+    ) {
       setIsAuth(true);
-      localStorage.setItem('auth', isAuth);
-      localStorage.setItem('login', globalLogin);
-      localStorage.setItem('password', globalPassword);
-    } else {
-      alert('wrong login or password, try again');
+      localStorage.setItem('auth', true);
     }
-  }
-
-  function handleForm(e) {
-    const { name, value } = e.target;
-    setForm((prevForm) => {
-      return { ...prevForm, [name]: value };
-    });
   }
 
   function logout() {
     setIsAuth(false);
     localStorage.removeItem('auth');
-    localStorage.removeItem('login');
-    localStorage.removeItem('password');
   }
 
   return (
@@ -86,9 +62,7 @@ function App() {
           <Route
             exact
             path="/login"
-            element={
-              <Login login={login} form={form} handleForm={handleForm} />
-            }
+            element={<Login authHandler={authHandler} />}
           />
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
