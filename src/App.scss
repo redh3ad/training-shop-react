@@ -25,4 +25,17 @@ body {
   width: 100%;
   padding: 16px;
   display: flex;
+  justify-content: space-between;
+  @media screen and(max-width:475px) {
+    padding: 10px;
+  }
+
+  .app__content {
+    float: right;
+    width: 100%;
+    margin-left: 112px;
+    @media screen and(max-width:475px) {
+      margin-left: 25%;
+    }
+  }
 }

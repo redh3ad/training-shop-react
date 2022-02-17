@@ -1,0 +1,21 @@
+.home__container {
+  display: flex;
+  align-items: center;
+  padding: 24px;
+
+  @media screen and(max-width:475px) {
+    padding: 16px;
+  }
+  @media screen and(max-width:375px) {
+    padding: 10px;
+  }
+
+  .img__container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  img {
+    width: 200px;
+  }
+}
