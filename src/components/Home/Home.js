@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import st from './Home.module.scss';
 import uniqid from 'uniqid';
 
