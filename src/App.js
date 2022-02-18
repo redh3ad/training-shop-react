@@ -47,6 +47,11 @@ function App() {
         <div className="app__wrapper">
           <Navbar logout={logout} />
           <div className="app__content">
+            <div>
+              <div className="bg"></div>
+              <div className="bg bg2"></div>
+              <div className="bg bg3"></div>
+            </div>
             <Routes>
               <Route path="/home" element={<Home />} />
               <Route path="/shop" element={<Shop />}>
