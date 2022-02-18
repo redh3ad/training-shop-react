@@ -2,7 +2,6 @@ import React from 'react';
 import st from './Home.module.scss';
 import uniqid from 'uniqid';
 import { images } from '../../data/data';
-import { Link } from 'react-router-dom';
 
 const Index = () => {
   return (
