@@ -1,28 +1,23 @@
 import React from 'react';
 import st from './Home.module.scss';
 import uniqid from 'uniqid';
+import { images } from '../../data/data';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
-  const images = [
-    '/assets/watch-apple.png',
-    '/assets/headphones-sony.png',
-    '/assets/apple-iphone-12-black.png',
-    '/assets/apple-iphone-12-green.png',
-    '/assets/apple-macbook.png',
-    '/assets/apple-iphone-12-red.png',
-    '/assets/apple-iphone-12-white.png',
-    '/assets/apple-iphone-12-pro-pink.png',
-    '/assets/apple-iphone-12-pro-blue.png',
-    '/assets/dell-xps-13-black.png',
-    '/assets/apple-iphone-13-pro-blue.png',
-    '/assets/apple-iphone-13-pro-black.png',
-    '/assets/samsung-note21-pinl-green.png',
-    '/assets/samsung-s21-purple.png',
-    '/assets/dell-xps-13-white.png',
-    '/assets/dell-xps-15-black.png',
-  ];
   return (
     <div className={st.home__container}>
+      <div className={st.home__description}>
+        <h1>Welcome to the Tech Shop !</h1>
+        <h2>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
+          fugit at, labore perferendis aut praesentium nisi sed facere
+          voluptatibus similique ullam iusto libero beatae molestias pariatur
+          voluptatum? Nobis ut facere aliquid voluptate reiciendis vero nesciunt
+          sequi, neque voluptates cupiditate quisquam, aut omnis! Ad ut non
+          commodi delectus, provident tenetur obcaecati.
+        </h2>
+      </div>
       <div className={st.img__container}>
         {images.map((image) => {
           return (
