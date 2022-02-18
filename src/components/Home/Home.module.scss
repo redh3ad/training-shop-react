@@ -5,7 +5,6 @@
   justify-content: center;
   padding: 0 24px;
   align-content: center;
-  overflow: hidden;
 
   @media screen and(max-width:475px) {
     padding: 16px;
@@ -94,113 +93,22 @@
     }
   }
 
-  .img__container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    opacity: 0.95;
-    overflow: hidden;
-  }
   img {
-    width: 200px;
-    @media screen and(max-width:1270px) {
-      width: 170px;
+    max-width: 1250px;
+    width: 80%;
+    position: absolute;
+    top: 8%;
+    @media screen and(max-width:1335px) {
+      top: 12%;
     }
-    @media screen and(max-width:1095px) {
-      width: 160px;
+    @media screen and(max-width:1170px) {
+      top: 15%;
     }
-    @media screen and(max-width:1010px) {
-      width: 150px;
+    @media screen and(max-width:840px) {
+      top: 10%;
     }
-    @media screen and(max-width:530px) {
-      width: 135px;
-    }
-    @media screen and(max-width:424px) {
-      width: 125px;
-    }
-    &:first-child {
-      transform: rotate(-30deg);
-    }
-    &:nth-child(2) {
-      transform: rotate(-20deg);
-    }
-    &:nth-child(3) {
-      transform: rotate(-10deg);
-    }
-    &:nth-child(4) {
-      transform: rotate(10deg);
-    }
-    &:nth-child(5) {
-      transform: rotate(20deg);
-      @media screen and(max-width:642px) {
-        display: none;
-      }
-    }
-    &:nth-child(6) {
-      transform: rotate(30deg);
-      @media screen and(max-width:642px) {
-        display: none;
-      }
-    }
-    &:nth-child(7) {
-      transform: rotate(-55deg);
-      @media screen and(max-width:796px) {
-        display: none;
-      }
-    }
-    &:nth-child(8) {
-      @media screen and(max-width:796px) {
-        display: none;
-      }
-    }
-    &:nth-child(9) {
-      transform: rotate(-55deg);
-      @media screen and(max-width:960px) {
-        display: none;
-      }
-    }
-    &:nth-child(10) {
-      transform: rotate(-55deg);
-      @media screen and(max-width:960px) {
-        display: none;
-      }
-    }
-    &:nth-child(11) {
-      transform: rotate(-55deg);
-      @media screen and(max-width:960px) {
-        display: none;
-      }
-    }
-    &:nth-child(12) {
-      transform: rotate(55deg);
-      @media screen and(max-width:796px) {
-        display: none;
-      }
-    }
-    &:nth-child(13) {
-      transform: rotate(-130deg);
-      @media screen and(max-width:396px) {
-        display: none;
-      }
-    }
-    &:nth-child(14) {
-      transform: rotate(-160deg);
-      @media screen and(max-width:396px) {
-        display: none;
-      }
-    }
-    &:nth-child(15) {
-      transform: rotate(160deg);
-      @media screen and(max-width:642px) {
-        display: none;
-      }
-    }
-    &:nth-child(16) {
-      transform: rotate(130deg);
-      @media screen and(max-width:1395px) {
-        display: none;
-      }
+    @media screen and(max-width:840px) {
+      width: 75%;
     }
   }
 }

@@ -1,7 +1,5 @@
 import React from 'react';
 import st from './Home.module.scss';
-import uniqid from 'uniqid';
-import { images } from '../../data/data';
 
 const Index = () => {
   return (
@@ -17,17 +15,10 @@ const Index = () => {
           commodi delectus, provident tenetur obcaecati.
         </h2>
       </div>
-      <div className={st.img__container}>
-        {images.map((image) => {
-          return (
-            <img
-              key={uniqid()}
-              src={`${process.env.PUBLIC_URL}${image}`}
-              alt={image.split('/')[3]}
-            ></img>
-          );
-        })}
-      </div>
+      <img
+        src={process.env.PUBLIC_URL + '/assets/home/home-bg.png'}
+        alt="home background"
+      ></img>
     </div>
   );
 };
