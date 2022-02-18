@@ -4,7 +4,7 @@ import uniqid from 'uniqid';
 
 const Index = () => {
   const images = [
-    '/assets/apple-iphone-12-black.png',
+    '/assets/watch-apple.png',
     '/assets/headphones-sony.png',
     '/assets/apple-iphone-12-black.png',
     '/assets/apple-iphone-12-green.png',
