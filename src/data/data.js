@@ -1,4 +1,4 @@
-export const images = [
+export const goods = [
   '/assets/watch-apple.png',
   '/assets/headphones-sony.png',
   '/assets/apple-iphone-12-black.png',

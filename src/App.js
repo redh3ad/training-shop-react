@@ -8,10 +8,11 @@ import {
 } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Shop from './components/Shop/Shop';
-import Cart from './components/Cart/Cart';
+import Bag from './components/Bag/Bag';
 import Login from './components/Login/Login';
 import { useState, useEffect } from 'react';
 import Product from './components/Shop/Product/Product';
+import uniqid from 'uniqid';
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -41,11 +42,67 @@ function App() {
     localStorage.removeItem('auth');
   }
 
+  const [activePage, setActivePage] = useState([
+    { name: 'home', isActive: true },
+    { name: 'shop', isActive: false },
+    { name: 'bag', isActive: false },
+  ]);
+
+  function handlerActivePage(e) {
+    const data = e.target.getAttribute('data-name');
+    setActivePage(
+      activePage.map((page) => {
+        if (page.name === data) {
+          return {
+            ...page,
+            isActive: true,
+          };
+        } else {
+          return {
+            ...page,
+            isActive: false,
+          };
+        }
+      }),
+    );
+  }
+
+  const [purchases, setPurchases] = useState([
+    {
+      id: uniqid(),
+      src: '/assets/dell-xps-13-white.png',
+      alt: 'notebook dell xps 13 white',
+      size: true,
+    },
+    {
+      id: uniqid(),
+      src: '/assets/apple-iphone-12-pro-blue.png',
+      alt: 'iphone 12 pro blue',
+      size: false,
+    },
+    {
+      id: uniqid(),
+      src: '/assets/apple-iphone-12-white.png',
+      alt: 'iphone 12 white',
+      size: false,
+    },
+    {
+      id: uniqid(),
+      src: '/assets/apple-iphone-12-black.png',
+      alt: 'iphone 12 black',
+      size: false,
+    },
+  ]);
+
   return (
     <Router>
       {isAuth ? (
         <div className="app__wrapper">
-          <Navbar logout={logout} />
+          <Navbar
+            logout={logout}
+            activePage={activePage}
+            handlerActivePage={handlerActivePage}
+          />
           <div className="app__content">
             <div>
               <div className="bg"></div>
@@ -54,10 +111,27 @@ function App() {
             </div>
             <Routes>
               <Route path="/home" element={<Home />} />
-              <Route path="/shop" element={<Shop />}>
-                <Route path=":id" element={<Product />} />
+              <Route
+                path="/shop"
+                element={
+                  <Shop
+                    handlerActivePage={handlerActivePage}
+                    purchases={purchases}
+                    setPurchases={setPurchases}
+                  />
+                }
+              >
+                <Route
+                  path=":id"
+                  element={<Product setPurchases={setPurchases} />}
+                />
               </Route>
-              <Route path="/cart" element={<Cart />} />
+              <Route
+                path="/bag"
+                element={
+                  <Bag purchases={purchases} setPurchases={setPurchases} />
+                }
+              />
               <Route path="*" element={<Navigate to="/home" />} />
             </Routes>
           </div>
